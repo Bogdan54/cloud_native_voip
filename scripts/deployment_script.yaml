@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voip-system
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: voip
+  template:
+    metadata:
+      labels:
+        app: voip
+    spec:
+      containers:
+      - name: freeswitch
+        image: freeswitch:latest
+        ports:
+        - containerPort: 5060
